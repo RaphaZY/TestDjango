@@ -19,7 +19,7 @@
         {% for x in users %}
             <strong>{{x.nome}}</strong>
             <strong>{{x.email}}</strong>
-            <img src="{{ imagem.url }}" alt="50x50" width="50px" height="50px">
+            <img src="{{ x.path.url }}" alt="50x50" width="50px" height="50px">
             <br>
         {% endfor %}    
     </div>
