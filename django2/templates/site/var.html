@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+{% block title %}
+<title>Sobre</title>
+{% endblock %}
+{% block content %}
+
+<div>
+    <h1>Oi alunos</h1>
+    <form action="{% url 'cadastro_variavel' %}" method="post">
+        {% csrf_token %}
+        {% for fields in form.visible_fields %}
+        <label>{{fields.label}}</label>
+        {{fields}}
+        {% endfor %}
+        <button class="btn btn-success" type="submit" >Cadastro</button>
+    </form>
+    <div>
+        {% for x in users %}
+            <strong>{{x.nome}}</strong>
+            <strong>{{x.email}}</strong>
+            <br>
+        {% endfor %}    
+    </div>
+</div>
+
+{% include 'partials/_footer.html' %}
+
+{% endblock %}

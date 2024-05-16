@@ -1,0 +1,30 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+{% block title %}
+<title>Iten</title>
+{% endblock %}
+{% block content %}
+
+<div>
+    <h1>Oi alunos</h1>
+    <form action="{% url 'cadastro_itens' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for fields in form.visible_fields %}
+        <label>{{fields.label}}</label>
+        {{fields}}
+        {% endfor %}
+        <button class="btn btn-success" type="submit" >Cadastro</button>
+    </form>
+    <div>
+        {% for x in users %}
+            <strong>{{x.nome}}</strong>
+            <strong>{{x.email}}</strong>
+            <img src="{{ imagem.url }}" alt="50x50" width="50px" height="50px">
+            <br>
+        {% endfor %}    
+    </div>
+</div>
+
+{% include 'partials/_footer.html' %}
+
+{% endblock %}
